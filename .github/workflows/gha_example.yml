@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       # Instalacja środowiska Docker + Buildx
       - name: Buildx set-up
@@ -33,8 +36,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           platforms: linux/arm64/v8,linux/amd64 
-          context: ../
-          file: ../Dockerfile_prod
+          context: ./
+          file: ./Dockerfile_prod
           push: true
           tags: |
             kacperczajka/lab:ghlab10example
